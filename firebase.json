@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "github-vue-bac3c",
+    "public": "docs",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
