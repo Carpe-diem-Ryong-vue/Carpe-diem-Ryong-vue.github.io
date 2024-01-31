@@ -1,36 +1,18 @@
 <script setup>
-import {ref} from 'vue'
+import { ref } from 'vue'
 
-const awesome = ref(true)
-
-function toggleAwesome(){
-    //
-    awesome.value = !awesome.value
-}
-
-/*
- function toggleAwesome(v){
- awesome.value = !v
- }
- */
-
-function isAwesome(){
-    //
-    return awesome.value
-}
-
+const parentMessage = ref('Parent')
+const items = ref([
+	{
+	    message : 'Foo'
+	},{
+	    message : 'Bar'}
+])
 </script>
 
 <template>
-    <button @click="toggleAwesome">toggle</button>
-  <!--  <button @click="toggleAwesome(awesome)">toggle</button> -->
-    
-<h1 v-if="isAwesome()">Vue is awesome!</h1>
-<h1 v-else>Oh no T T</h1>
-
-<h4 v-if="isAwesome">v-if TRUE</h4>
-<h4 v-show="isAwesome()">v-show TRUE</h4>
-
-
+<li v-for="(item,index) in items">
+{{parentMessage}} - {{index}} - {{item.message}}
+</li>
 
 </template>
