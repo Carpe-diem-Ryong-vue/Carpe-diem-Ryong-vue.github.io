@@ -1,47 +1,36 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import {ref} from 'vue'
+
+const awesome = ref(true)
+
+function toggleAwesome(){
+    //
+    awesome.value = !awesome.value
+}
+
+/*
+ function toggleAwesome(v){
+ awesome.value = !v
+ }
+ */
+
+function isAwesome(){
+    //
+    return awesome.value
+}
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <button @click="toggleAwesome">toggle</button>
+  <!--  <button @click="toggleAwesome(awesome)">toggle</button> -->
+    
+<h1 v-if="isAwesome()">Vue is awesome!</h1>
+<h1 v-else>Oh no T T</h1>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+<h4 v-if="isAwesome">v-if TRUE</h4>
+<h4 v-show="isAwesome()">v-show TRUE</h4>
 
-  <main>
-    <TheWelcome />
-  </main>
+
+
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
