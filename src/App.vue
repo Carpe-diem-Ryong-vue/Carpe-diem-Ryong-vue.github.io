@@ -1,47 +1,22 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue'
+import Mainpokemon from "@/assets/pokemon.json"
+
+
+const parentMessage = ref('Parent')
+const pokemons = ref(Mainpokemon.pokemon)
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <ul>
+	 <template v-for="(pokemon,index) in pokemons" :key="index">
+<li v-if="pokemon.type.includes('Electric') ">
+번호 : {{pokemon.num}}<br> 
+이름  : {{pokemon.name}} <br>
+속성 : {{pokemon.type}}<br>   약점 :  {{pokemon.weaknesses}} <br>
+<img :src="pokemon.img" alt="Pokemon Image" style="max-width: 100px; max-height: 100px;"><br>
+<hr>
+</li>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+</ul>
+</template>
