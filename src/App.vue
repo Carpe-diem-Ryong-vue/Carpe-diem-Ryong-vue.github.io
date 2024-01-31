@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import category from "@/assets/category.json"
+import Mainpokemon from "@/assets/pokemon.json"
 
 
 const parentMessage = ref('Parent')
@@ -12,7 +12,7 @@ const items = ref([
 	    message : 'Bar'}
 ])
 */
-const items = ref(category)
+const pokemons = ref(Mainpokemon.pokemon)
 </script>
 
 <template>
@@ -21,7 +21,11 @@ const items = ref(category)
 {{parentMessage}} - {{index}} - {{item.message}}
 </li>
 -->
-<li v-for="(item,index) in items" :key="index">
-{{item.name}}  - {{item.code}}
+<li v-for="(pokemon,index) in pokemons" :key="index">
+번호 : {{pokemon.num}}<br> 
+이름  : {{pokemon.name}} <br>
+속성 : {{pokemon.type}}<br>   약점 :  {{pokemon.weaknesses}} <br>
+<img :src="pokemon.img" alt="Pokemon Image" style="max-width: 100px; max-height: 100px;"><br>
+
 </li>
 </template>
