@@ -5,9 +5,13 @@ const author = ref({
     name: 'John Doe',
     books: [1,2,3]
     })
+// a computed ref
+const publishedBooksMessage = computed( () => {return author.value.books.length > 2 ? 'Yes' : 'No' })
 </script>
 
 <template>
-    <p>Has published book : </p>
-    <span>{{author.books.length > 2 ? 'Yes' : 'No'}}</span>
+    <span> 😎 :  </span>
+    <span> {{author.books.length > 2 ? 'Yes' : 'No'}} </span>
+    <div>computed ⬇️</div>
+    <div>{{publishedBooksMessage}}</div>
 </template>
