@@ -1,47 +1,17 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import {reactive, computed, ref } from 'vue'
+
+const author = reactive({
+    name: 'John Doe',
+    books: [1,2,3]
+    })
+// a computed ref
+const publishedBooksMessage = computed( () => {return author.books.length > 2 ? 'Yes' : 'No' })
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <span> 😎 :  </span>
+    <span> {{author.books.length > 2 ? 'Yes' : 'No'}} </span>
+    <div>computed ⬇️</div>
+    <div>{{publishedBooksMessage}}</div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
